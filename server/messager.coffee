@@ -1,14 +1,16 @@
 {EventEmitter} = require('events')
 
-Messager = new EventEmitter
+class Messager extends EventEmitter
+  constructor: ->
+    @messages = []
 
-messages = []
+  @toString: -> 'Messager'
 
-Messager.add = (message) ->
-  messages.push(message)
-  @emit('add', message)
+  add: (message) ->
+    @messages.push(message)
+    @emit('add', message)
 
-Messager.messages = ->
-  messages
+  getMessages: ->
+    @messages
 
 exports.Messager = Messager

@@ -1,19 +1,18 @@
 {Messager} = require_root ('server/messager.coffee')
 
 describe 'Messager', ->
+  beforeEach ->
+    @messager = new Messager
+
   it 'adds and retrieves messages', ->
-    message = 'hey there!'
-    Messager.add(message)
-    messages = Messager.messages()
-    expect(messages[0]).toBe(message)
+    @messager.add('hey there')
+    expect(@messager.getMessages()).toContain('hey there')
 
   it 'notifies listeners of new messages', ->
-    message = 'hello sir!'
-    notification = null
-    Messager.on 'add', (eventMessage) ->
-      notification = eventMessage
-    Messager.add(message)
-    waitsFor ->
-      notification?
+    notified = false
+    @messager.on 'add', (eventMessage) ->
+      notified = true
+    @messager.add('hey there')
+    waitsFor -> notified
 
 
