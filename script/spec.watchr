@@ -4,6 +4,6 @@ def jessie
 end
 
 watch('spec/.*\.coffee') { jessie() }
-watch('server/.*\.coffee') { jessie() }
+watch('app/.*\.coffee') { jessie() }
 
 

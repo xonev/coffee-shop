@@ -9,13 +9,15 @@ class UserList extends EventEmitter
 
   addUser: (user) ->
     @users.push(user)
-    @emit('add')
+    @emit('add', user)
 
   removeUser: (targetUser) ->
     for user, index in @users
       if user == targetUser
         @users.splice(index, 1)
-        break
-    @emit('remove')
+        @emit('remove', targetUser)
+        return
+
+    @emit('remove', null)
 
 exports.UserList = UserList

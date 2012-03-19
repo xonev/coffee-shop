@@ -1,4 +1,4 @@
-{Messager} = require_root ('server/messager.coffee')
+{Messager} = require_root ('app/messager.coffee')
 
 describe 'Messager', ->
   beforeEach ->
