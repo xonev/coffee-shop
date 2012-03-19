@@ -20,4 +20,7 @@ class UserList extends EventEmitter
 
     @emit('remove', null)
 
+  getUsers: ->
+    @users
+
 exports.UserList = UserList

@@ -22,6 +22,9 @@ io.sockets.on 'connection', (socket) ->
   userName = "guest_#{guestCount++}"
   userList.addUser(userName)
 
+  socket.emit('init_users', userList.getUsers())
+  socket.emit('init_messages', messager.getMessages())
+
   userList.on 'add', (user) ->
     socket.emit('add_user', user)
   userList.on 'remove', (user) ->

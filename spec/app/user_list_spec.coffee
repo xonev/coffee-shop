@@ -7,14 +7,15 @@ describe UserList, ->
   it 'adds a user and lists all users', ->
     @list.addUser('smassa')
     @list.addUser('guest 123')
-    expect(@list.users).toContain('smassa', 'guest 123')
+    expect(@list.getUsers()).toContain('smassa', 'guest 123')
 
   it 'removes a user', ->
     @list.addUser('smassa')
     @list.addUser('guest 123')
     @list.removeUser('smassa')
-    expect(@list.users.length).toBe(1)
-    expect(@list.users).toContain('guest 123')
+    users = @list.getUsers()
+    expect(users.length).toBe(1)
+    expect(users).toContain('guest 123')
 
   it 'notifies listeners on add', ->
     notified = false
