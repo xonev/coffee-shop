@@ -22,8 +22,10 @@ io.sockets.on 'connection', (socket) ->
   userName = "guest_#{guestCount++}"
   userList.addUser(userName)
 
-  socket.emit('init_users', userList.getUsers())
-  socket.emit('init_messages', messager.getMessages())
+  socket.emit 'init',
+    self: userName
+    messages: messager.getMessages()
+    users: userList.getUsers()
 
   userList.on 'add', (user) ->
     socket.emit('add_user', user)
@@ -33,7 +35,7 @@ io.sockets.on 'connection', (socket) ->
     socket.emit('add_message', message)
   
   socket.on 'command', (command) ->
-    commander.process(command)
+    commander.process(command, userName)
 
   socket.on 'disconnect', ->
     userList.removeUser(userName)

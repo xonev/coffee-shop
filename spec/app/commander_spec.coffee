@@ -7,7 +7,7 @@ describe Commander, ->
   it 'processes message command', ->
     notified = false
     @commander.on 'message', (message) ->
-      notified = message
+      notified = message.text
     @commander.process('hey there tom')
     waitsFor -> notified == 'hey there tom'
 

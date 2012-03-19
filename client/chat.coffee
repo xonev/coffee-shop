@@ -7,13 +7,12 @@ initialize = ->
 
 socket = io.connect('http://localhost:1337')
 
-socket.on 'init_users', (users) ->
-  for user in users
+socket.on 'init', (data) ->
+  userName = data.self
+  for user in data.users
     addUser(user)
-
-socket.on 'init_messages', (messages) ->
-  for message in messages
-    addMessage(message)
+  for message in data.messages
+    addMessage(message.user, message.text)
 
 socket.on 'add_user', (user) ->
   addUser(user)
@@ -22,7 +21,7 @@ socket.on 'remove_user', (user) ->
   $('#users #'+user).remove()
 
 socket.on 'add_message', (message) ->
-  addMessage(message)
+  addMessage(message.user, message.text)
 
 addUser = (user) ->
   $user = $('<div />')
@@ -30,9 +29,9 @@ addUser = (user) ->
   $user.html(user)
   $('#users').append($user)
 
-addMessage = (message) ->
-  $msg = $('<div />')
-  $msg.html(message)
+addMessage = (user, message) ->
+  $msg = $('<tr />')
+  $msg.html("<td class='username'>#{user}</td><td class='message'>#{message}</td>")
   $('#messages').append($msg)
 
 $ -> initialize()

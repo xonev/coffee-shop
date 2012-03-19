@@ -13,22 +13,19 @@
 
   socket = io.connect('http://localhost:1337');
 
-  socket.on('init_users', function(users) {
-    var user, _i, _len, _results;
-    _results = [];
-    for (_i = 0, _len = users.length; _i < _len; _i++) {
-      user = users[_i];
-      _results.push(addUser(user));
+  socket.on('init', function(data) {
+    var message, user, userName, _i, _j, _len, _len2, _ref, _ref2, _results;
+    userName = data.self;
+    _ref = data.users;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      user = _ref[_i];
+      addUser(user);
     }
-    return _results;
-  });
-
-  socket.on('init_messages', function(messages) {
-    var message, _i, _len, _results;
+    _ref2 = data.messages;
     _results = [];
-    for (_i = 0, _len = messages.length; _i < _len; _i++) {
-      message = messages[_i];
-      _results.push(addMessage(message));
+    for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
+      message = _ref2[_j];
+      _results.push(addMessage(message.user, message.text));
     }
     return _results;
   });
@@ -42,7 +39,7 @@
   });
 
   socket.on('add_message', function(message) {
-    return addMessage(message);
+    return addMessage(message.user, message.text);
   });
 
   addUser = function(user) {
@@ -53,10 +50,10 @@
     return $('#users').append($user);
   };
 
-  addMessage = function(message) {
+  addMessage = function(user, message) {
     var $msg;
-    $msg = $('<div />');
-    $msg.html(message);
+    $msg = $('<tr />');
+    $msg.html("<td class='username'>" + user + "</td><td class='message'>" + message + "</td>");
     return $('#messages').append($msg);
   };
 

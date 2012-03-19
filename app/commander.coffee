@@ -3,16 +3,18 @@
 class Commander extends EventEmitter
   @toString: -> 'Commander'
   
-  process: (input) ->
+  process: (input, user) ->
     if input[0] == '/'
-      @slashCommand(input)
+      @slashCommand(input, user)
     else
-      @message(input)
+      @message(input, user)
 
-  message: (message) ->
-    @emit('message', message)
+  message: (message, user) ->
+    @emit 'message',
+      user: user
+      text: message
 
-  slashCommand: (input) ->
+  slashCommand: (input, user) ->
     input = input.substring(1)
     parts = input.split(' ')
     command = parts.splice(0, 1)

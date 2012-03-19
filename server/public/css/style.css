@@ -27,3 +27,12 @@ body, html {
   width: 200px;
   min-height: 600px;
 }
+
+.username {
+  font-weight: bold;
+}
+
+.message {
+  padding-left: 10px;
+}
+
