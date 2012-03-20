@@ -9,6 +9,7 @@ Getting Started
 1. `git clone git@github.com:EndangeredMassa/coffee-shop.git`
 1. `cd coffee-shop && npm install`
 1. `gem install watchr`
+1. `gem install foreman`
 1. `npm test` # make sure it all passes
 1. `ctrl+c`
 1. `npm start` # run the server
