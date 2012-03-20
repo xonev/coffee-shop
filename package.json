@@ -5,6 +5,7 @@
     "coffee-script": "",
     "express": "",
     "jade": "",
-    "socket.io": ""
+    "socket.io": "",
+    "zombie": ""
   }
 }

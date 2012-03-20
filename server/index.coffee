@@ -1,7 +1,7 @@
 express = require('express')
 {configure} = require('./config')
 app = module.exports = express.createServer()
-io = require('socket.io').listen(app)
+io = require('socket.io').listen(app, { log: false })
 
 configure(express, app)
 
