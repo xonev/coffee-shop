@@ -3,6 +3,8 @@ def jessie
   puts "====================="
 end
 
+jessie()
+
 watch('spec/app.*\.coffee') { jessie() }
 watch('app/.*\.coffee') { jessie() }
 
