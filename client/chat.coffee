@@ -8,7 +8,7 @@ initialize = ->
       socket.emit('command', $this.val())
       $this.val('')
 
-socket = io.connect('http://localhost:1337')
+socket = io.connect('http://#{window.location.host}')
 
 socket.on 'init', (data) ->
   userName = data.self

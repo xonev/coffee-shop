@@ -16,7 +16,7 @@
     });
   };
 
-  socket = io.connect('http://localhost:1337');
+  socket = io.connect('http://#{window.location.host}');
 
   socket.on('init', function(data) {
     var message, user, userName, _i, _j, _len, _len2, _ref, _ref2, _results;
