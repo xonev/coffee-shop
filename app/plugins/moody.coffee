@@ -26,11 +26,11 @@ class Moody
   express: ->
     if @moodLevel >= 5
       @voice
-        username: 'Moody'
+        user: 'Moody'
         text: 'This place makes me happy.'
     if @moodLevel <= -5
       @voice
-        username: 'Moody'
+        user: 'Moody'
         text: 'This place makes me sad.'
 
   getMood: ->

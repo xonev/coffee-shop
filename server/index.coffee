@@ -13,6 +13,15 @@ userList = new UserList
 commander = new Commander
 messager = new Messager
 
+
+# plugins!
+{Moody} = require('../app/plugins/moody')
+moody = new Moody (message) ->
+  io.sockets.emit 'add_message', message
+commander.on 'message', (message) ->
+  moody.feel(message.text)
+
+
 commander.on 'message', (message) ->
   messager.add(message)
 
@@ -33,7 +42,7 @@ io.sockets.on 'connection', (socket) ->
     socket.emit('remove_user', user)
   messager.on 'add', (message) ->
     socket.emit('add_message', message)
-  
+
   socket.on 'command', (command) ->
     commander.process(command, userName)
 
