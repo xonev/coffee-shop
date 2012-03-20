@@ -2,7 +2,7 @@
 
 class Commander extends EventEmitter
   @toString: -> 'Commander'
-  
+
   process: (input, user) ->
     if input[0] == '/'
       @slashCommand(input, user)

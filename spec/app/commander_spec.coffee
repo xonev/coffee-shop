@@ -18,4 +18,3 @@ describe Commander, ->
     @commander.process('/name Sean')
     waitsFor -> notified == 'Sean'
 
-

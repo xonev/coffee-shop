@@ -5,6 +5,9 @@ global.require_root = function(path) {
   return require (rootPath)
 }
 
+global.p = console.log
+jasmine.getEnv().defaultTimeoutInterval = 300
+
 beforeEach(function(){
   this.addMatchers({
     toContain: function() {
