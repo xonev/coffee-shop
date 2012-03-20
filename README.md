@@ -13,6 +13,7 @@ Getting Started
 1. `npm test` # make sure it all passes
 1. `ctrl+c`
 1. `npm start` # run the server
+1. visit `localhost:1337` in your browser
 
 Testing
 ==
