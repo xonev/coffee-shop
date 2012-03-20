@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-coffee -wc -o server/public/js/ client/
-

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-coffee server &
+./../node_modules/coffee-script/bin/coffee server &
 

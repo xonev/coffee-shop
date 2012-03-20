@@ -1,5 +1,5 @@
 def jessie
-  system('jessie spec/app -f nested') 
+  system('./node_modules/jessie/bin/jessie spec/app -f nested') 
   puts "====================="
 end
 
