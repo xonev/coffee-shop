@@ -1,4 +1,4 @@
-initialize =
+initialize = ->
   $('#command').on 'keyup', (event) ->
     return if event.keyCode != 13
     $this = $(this)

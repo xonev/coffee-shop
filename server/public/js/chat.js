@@ -1,13 +1,15 @@
 (function() {
   var addMessage, addUser, initialize, socket;
 
-  initialize = $('#command').on('keyup', function(event) {
-    var $this;
-    if (event.keyCode !== 13) return;
-    $this = $(this);
-    socket.emit('command', $this.val());
-    return $this.val('');
-  });
+  initialize = function() {
+    return $('#command').on('keyup', function(event) {
+      var $this;
+      if (event.keyCode !== 13) return;
+      $this = $(this);
+      socket.emit('command', $this.val());
+      return $this.val('');
+    });
+  };
 
   socket = io.connect('http://localhost:1337');
 
