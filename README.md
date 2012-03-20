@@ -18,7 +18,7 @@ Auto-compile CoffeeScript for Client
 
 Testing
 ==
-1. For acceptance tests (spec/server), make sure you have the server running with `coffee server`.
-1. `watchr script/spec.watchr`
+1. For acceptance tests: `watchr script/spec_server.watchr`
+1. For unit tests: `watchr script/spec_app.watchr`
 
 
