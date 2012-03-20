@@ -19,14 +19,15 @@ class Commander extends EventEmitter
     parts = input.split(' ')
     command = parts.splice(0, 1)
     args = parts
+    args.unshift(user)
 
     commandName = command + 'Command'
     commandFunc = this[commandName]
     if commandFunc?
       commandFunc.apply(this, args)
 
-  nameCommand: (username) ->
-    @emit('username', username)
+  nameCommand: (oldUserName, newUserName) ->
+    @emit('username', oldUserName, newUserName)
 
 
 exports.Commander = Commander

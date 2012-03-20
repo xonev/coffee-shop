@@ -2,12 +2,17 @@
   var addMessage, addUser, initialize, socket;
 
   initialize = function() {
-    return $('#command').on('keyup', function(event) {
+    var $command;
+    $command = $('#command');
+    $command.focus();
+    return $command.on('keyup', function(event) {
       var $this;
       if (event.keyCode !== 13) return;
       $this = $(this);
-      socket.emit('command', $this.val());
-      return $this.val('');
+      if ($this.val() !== '') {
+        socket.emit('command', $this.val());
+        return $this.val('');
+      }
     });
   };
 

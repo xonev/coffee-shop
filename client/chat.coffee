@@ -1,9 +1,12 @@
 initialize = ->
-  $('#command').on 'keyup', (event) ->
+  $command = $('#command')
+  $command.focus()
+  $command.on 'keyup', (event) ->
     return if event.keyCode != 13
     $this = $(this)
-    socket.emit('command', $this.val())
-    $this.val('')
+    if $this.val() != ''
+      socket.emit('command', $this.val())
+      $this.val('')
 
 socket = io.connect('http://localhost:1337')
 

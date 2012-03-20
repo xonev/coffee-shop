@@ -13,8 +13,8 @@ describe Commander, ->
 
   it 'processes a username command', ->
     notified = false
-    @commander.on 'username', (username) ->
-      notified = username
+    @commander.on 'username', (oldUserName, newUserName) ->
+      notified = newUserName
     @commander.process('/name Sean')
     waitsFor -> notified == 'Sean'
 
