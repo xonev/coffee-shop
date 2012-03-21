@@ -34,7 +34,9 @@ addUser = (user) ->
 
 addMessage = (user, message) ->
   $msg = $('<tr />')
-  $msg.html("<td class='username'>#{user}</td><td class='message'>#{message}</td>")
+  renderedResult = Renderer.renderMessage(message)
+  $msg.html("<td class='username'>#{user}</td><td class='message'>#{message}<br />#{renderedResult[0]}</td>")
   $('#messages').append($msg)
+
 
 $ -> initialize()

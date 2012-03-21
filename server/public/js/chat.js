@@ -56,9 +56,10 @@
   };
 
   addMessage = function(user, message) {
-    var $msg;
+    var $msg, renderedResult;
     $msg = $('<tr />');
-    $msg.html("<td class='username'>" + user + "</td><td class='message'>" + message + "</td>");
+    renderedResult = Renderer.renderMessage(message);
+    $msg.html("<td class='username'>" + user + "</td><td class='message'>" + message + "<br />" + renderedResult[0] + "</td>");
     return $('#messages').append($msg);
   };
 
