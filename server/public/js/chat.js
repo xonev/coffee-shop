@@ -56,10 +56,15 @@
   };
 
   addMessage = function(user, message) {
-    var $msg, renderedResult;
+    var $msg, htmlResult, renderedResult, result, _i, _len;
     $msg = $('<tr />');
     renderedResult = Renderer.renderMessage(message);
-    $msg.html("<td class='username'>" + user + "</td><td class='message'>" + message + "<br />" + renderedResult[0] + "</td>");
+    htmlResult = "";
+    for (_i = 0, _len = renderedResult.length; _i < _len; _i++) {
+      result = renderedResult[_i];
+      htmlResult += result;
+    }
+    $msg.html("<td class='username'>" + user + "</td><td class='message'>" + message + "<br />" + htmlResult + "</td>");
     return $('#messages').append($msg);
   };
 
